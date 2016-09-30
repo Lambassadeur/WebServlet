@@ -1,6 +1,6 @@
 <%-- 
-    Document   : lister_films.jsp
-    Created on : 28 sept. 2016, 12:08:14
+    Document   : _TEMPLATE
+    Created on : 28 sept. 2016, 16:09:17
     Author     : admin
 --%>
 
@@ -18,13 +18,13 @@
             <c:import url="_MENU.jsp"/>
         </div>
         <div class="titre">
-            Liste des films
+            Liste des series
         </div>
         <div class="contenu">
-            <c:forEach items="${mesFilms}" var="filmAct">
-                ${filmAct.titre}<a href="supprimer_film?id=${filmAct.id}"> Supprimer</a>
+             <c:forEach items="${mesSeries}" var="serieAct">
+                 ${serieAct.titre}<a href="supprimer_serie?id=${serieAct}"> Supprimer</a>
                 <br/>
-            </c:forEach> 
+            </c:forEach>
         </div>
         <div class="pied">
             <c:import url="_FOOT.jsp"/>

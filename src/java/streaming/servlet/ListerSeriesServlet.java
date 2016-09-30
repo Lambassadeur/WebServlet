@@ -13,15 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import streaming.entity.Film;
-import streaming.service.FilmService;
+import streaming.entity.Serie;
+import streaming.service.SerieService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "ListerFilmsServlet", urlPatterns = {"/lister_films"})
-public class ListerFilmsServlet extends HttpServlet {
+@WebServlet(name = "ListerSeriesServlet", urlPatterns = {"/lister_series"})
+public class ListerSeriesServlet extends HttpServlet {
 
 //    @Override
 //    protected void doPost() {
@@ -29,14 +29,15 @@ public class ListerFilmsServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       //System.out.println("coucou");
         
-        List<Film> films = new FilmService().lister();
+        List<Serie> series = new SerieService().lister();
         
-        req.setAttribute("titre", "TEST LISTE FILMS");
-        req.setAttribute("mesFilms", films);
+        req.setAttribute("titre", "TEST LISTE SERIES");
+        req.setAttribute("mesSeries", series);
         req.setAttribute("pied", "FOOT");
         
-        req.getRequestDispatcher("lister_films.jsp").forward(req, resp);
+        req.getRequestDispatcher("lister_series.jsp").forward(req, resp);
         
         
     }

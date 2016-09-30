@@ -8,48 +8,49 @@ package streamin.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import streaming.entity.Film;
+import streaming.entity.Serie;
 
 /**
  *
  * @author admin
  */
-public class FilmDAO {
+public class SerieDAO {
     
-    public List<Film> listerFilms() {
-        EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
-        List<Film> l = (List<Film>) em.createQuery("SELECT f FROM Film f ORDER BY f.id DESC").getResultList();//ordre descendant by identifiant
-        return l;
+    public List<Serie> listerSeries(){
+        EntityManager em= Persistence.createEntityManagerFactory("PU").createEntityManager();
+        List<Serie> s = (List<Serie>) em.createQuery("SELECT s FROM Serie s ORDER BY s.id DESC").getResultList();   //ordre descendant by identifiant
+        return s;
     }
-    
-    public void ajouterFilm(Film f) {
+
+    public void ajouterSerie(Serie s) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         em.getTransaction().begin();
-        em.persist(f);
+        em.persist(s);
         em.getTransaction().commit();
     }
 
-    public void modifierFilm(Film f) {
+    public void modifierSerie(Serie s) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         em.getTransaction().begin();
-        em.merge(f);
+        em.merge(s);
         em.getTransaction().commit();
     }
 
-    public void supprimerFilm(long id) {
+    public void supprimerSerie(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
         em.getTransaction().begin();
-        em.createQuery("DELETE FROM Film f WHERE f.id = " + id).executeUpdate();
+        em.createQuery("DELETE FROM Serie s WHERE s.id = " + id).executeUpdate();
         em.getTransaction().commit();
     }
     
-    public Film rechercheParId(long id) {
+    public Serie rechercheParId(long id) {
         EntityManager em = Persistence.createEntityManagerFactory("PU").createEntityManager();
         
-        return em.find(Film.class, id);
+        return em.find(Serie.class, id);
     }
-
+    
 }
+

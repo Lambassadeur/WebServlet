@@ -1,6 +1,6 @@
 <%-- 
-    Document   : lister_films.jsp
-    Created on : 28 sept. 2016, 12:08:14
+    Document   : _TEMPLATE
+    Created on : 28 sept. 2016, 16:09:17
     Author     : admin
 --%>
 
@@ -22,9 +22,9 @@
         </div>
         <div class="contenu">
             <c:forEach items="${mesFilms}" var="filmAct">
-                ${filmAct.titre}<a href="supprimer_film?id=${filmAct.id}"> Supprimer</a>
+                ${filmAct.titre}
                 <br/>
-            </c:forEach> 
+            </c:forEach>
         </div>
         <div class="pied">
             <c:import url="_FOOT.jsp"/>

@@ -7,39 +7,30 @@ package streaming.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import streaming.entity.Film;
-import streaming.service.FilmService;
+import streaming.service.SerieService;
 
 /**
  *
  * @author admin
  */
-@WebServlet(name = "ListerFilmsServlet", urlPatterns = {"/lister_films"})
-public class ListerFilmsServlet extends HttpServlet {
+@WebServlet(name = "SupprimerSerie", urlPatterns = {"/supprimer_serie"})
+public class SupprimerSerieServlet extends HttpServlet {
 
-//    @Override
-//    protected void doPost() {
-//    } 
-    
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        long id = Long.valueOf( req.getParameter("id") );
         
-        List<Film> films = new FilmService().lister();
+        new SerieService().supprimerSerie(id);
         
-        req.setAttribute("titre", "TEST LISTE FILMS");
-        req.setAttribute("mesFilms", films);
-        req.setAttribute("pied", "FOOT");
-        
-        req.getRequestDispatcher("lister_films.jsp").forward(req, resp);
-        
+        //Redirect
+        resp.sendRedirect("lister_series");
         
     }
+    
 
-   
 }

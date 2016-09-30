@@ -1,6 +1,6 @@
 <%-- 
-    Document   : lister_films.jsp
-    Created on : 28 sept. 2016, 12:08:14
+    Document   : AjouterSerie
+    Created on : 30 sept. 2016, 11:41:32
     Author     : admin
 --%>
 
@@ -18,13 +18,16 @@
             <c:import url="_MENU.jsp"/>
         </div>
         <div class="titre">
-            Liste des films
+            Nouvelle série
         </div>
         <div class="contenu">
-            <c:forEach items="${mesFilms}" var="filmAct">
-                ${filmAct.titre}<a href="supprimer_film?id=${filmAct.id}"> Supprimer</a>
-                <br/>
-            </c:forEach> 
+            <form method="POST">
+                <label>Titre</label><input name="titre" type="text"></input><br/>
+                <label>Synopsis</label><textarea name="synopsis" type="text"></textarea><br/>
+                <label>Année de production</label><input name="annee" type="text"></input><br/>
+                <label>Durée</label><input name="duree" type="text"></input><br/>
+                <input type="submit" value="Ajouter"/><br/>
+            </form>
         </div>
         <div class="pied">
             <c:import url="_FOOT.jsp"/>
